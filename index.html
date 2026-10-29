@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policies - App List</title>
+  <style>
+    :root {
+      --bg-color: #0a0a0f;
+      --card-bg: #1a1a24;
+      --text-color: #fff;
+      --muted-color: #888;
+      --accent-color: #ff6b35;
+      --border-color: #2a2a3a;
+    }
+
+    [data-theme="light"] {
+      --bg-color: #f8f9fa;
+      --card-bg: #ffffff;
+      --text-color: #1a1a1a;
+      --muted-color: #666;
+      --accent-color: #ff6b35;
+      --border-color: #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg-color);
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      text-align: center;
+      color: var(--text-color);
+      max-width: 800px;
+      padding: 0 1rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--accent-color), #fcc200);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: var(--muted-color);
+      margin-bottom: 2rem;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--muted-color);
+      font-size: 1.25rem;
+      cursor: pointer;
+      z-index: 100;
+      transition: color 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      color: var(--accent-color);
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .app-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      text-decoration: none;
+      color: var(--text-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      display: flex;
+      flex-flow: column wrap;
+      align-items: flex-start;
+    }
+
+    .app-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      border-color: var(--accent-color);
+    }
+
+    .app-icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 0.75rem;
+      background: var(--border-color);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      color: var(--accent-color);
+      margin-bottom: 0.25rem;
+    }
+
+    .app-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      align-self: stretch;
+    }
+
+    .app-desc {
+      font-size: 0.75rem;
+      color: var(--muted-color);
+    }
+
+    .link-icon {
+      margin-left: 0.25rem;
+      transform: rotate(-45deg);
+      transition: transform 0.3s ease;
+      font-size: 0.6rem;
+    }
+
+    .app-card:hover .link-icon {
+      transform: rotate(-45deg) translateX(2px);
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2rem; }
+      .apps-grid { gap: 1rem; }
+      .app-card { padding: 1.5rem 1rem; }
+      .app-icon { width: 48px; height: 48px; }
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+    🌓
+  </button>
+  
+  <div class="container">
+    <h1>Privacy Policies</h1>
+    <p class="subtitle">Select an application to view its privacy policy</p>
+    
+    <div class="apps-grid">
+      <a href="https://sajedur0.github.io/Privacy-Policies/Disk-Partition-Calculator/" class="app-card">
+        <div class="app-icon">📊</div>
+        <div class="app-title">Disk Partition Calculator</div>
+        <div class="app-desc">Privacy Policy</div>
+        <span class="link-icon">→</span>
+      </a>
+
+      <a href="https://sajedur0.github.io/Privacy-Policies/Router-Page-Setup/" class="app-card">
+        <div class="app-icon">📡</div>
+        <div class="app-title">Router Page Setup</div>
+        <div class="app-desc">Privacy Policy</div>
+        <span class="link-icon">→</span>
+      </a>
+
+      <a href="https://sajedur0.github.io/Privacy-Policies/PinSaver-Video-Downloader/" class="app-card">
+        <div class="app-icon">📥</div>
+        <div class="app-title">PinSaver Video Downloader</div>
+        <div class="app-desc">Privacy Policy</div>
+        <span class="link-icon">→</span>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Set initial theme based on system preference
+    if (prefersDarkScheme.matches) {
+      document.body.setAttribute('data-theme', 'dark');
+    } else {
+      document.body.setAttribute('data-theme', 'light');
+    }
+    
+    // Toggle theme on button click
+    themeToggle.addEventListener('click', () => {
+      if (document.body.getAttribute('data-theme') === 'dark') {
+        document.body.setAttribute('data-theme', 'light');
+      } else {
+        document.body.setAttribute('data-theme', 'dark');
+      }
+    });
+  </script>
+</body>
+</html>
