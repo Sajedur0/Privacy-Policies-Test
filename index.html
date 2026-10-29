@@ -1,207 +1,935 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policies - App List</title>
+  <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="Privacy policies for apps by Sajedur0 — Disk Partition Calculator, Router Page Setup and PinSaver Video Downloader.">
+  <title>Privacy Policies — Sajedur0</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230071e3'/%3E%3Cpath d='M32 16l13 5v10c0 8-5.5 14-13 17-7.5-3-13-9-13-17V21z' fill='%23fff'/%3E%3C/svg%3E">
+
   <style>
     :root {
-      --bg-color: #0a0a0f;
-      --card-bg: #1a1a24;
-      --text-color: #fff;
-      --muted-color: #888;
-      --accent-color: #ff6b35;
-      --border-color: #2a2a3a;
+      --bg: #f2f2f7;
+      --bg-elevated: #ffffff;
+      --surface: #ffffff;
+      --surface-2: #f2f2f7;
+      --text: #1c1c1e;
+      --text-secondary: #6e6e73;
+      --text-tertiary: #8e8e93;
+      --separator: rgba(60, 60, 67, 0.12);
+      --fill: rgba(118, 118, 128, 0.12);
+      --accent: #0071e3;
+      --accent-soft: rgba(0, 113, 227, 0.10);
+      --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 12px 32px rgba(0, 0, 0, 0.06);
+      --card-shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.05), 0 22px 48px rgba(0, 0, 0, 0.12);
+      --star: #ff9f0a;
+      --glass: rgba(255, 255, 255, 0.72);
+      --glass-border: rgba(255, 255, 255, 0.6);
+      --hero-from: #0a2a5e;
+      --hero-to: #0071e3;
+      color-scheme: light;
     }
 
-    [data-theme="light"] {
-      --bg-color: #f8f9fa;
-      --card-bg: #ffffff;
-      --text-color: #1a1a1a;
-      --muted-color: #666;
-      --accent-color: #ff6b35;
-      --border-color: #e0e0e0;
+    [data-theme="dark"] {
+      --bg: #000000;
+      --bg-elevated: #1c1c1e;
+      --surface: #1c1c1e;
+      --surface-2: #2c2c2e;
+      --text: #f5f5f7;
+      --text-secondary: #a1a1a6;
+      --text-tertiary: #8e8e93;
+      --separator: rgba(84, 84, 88, 0.5);
+      --fill: rgba(118, 118, 128, 0.24);
+      --accent: #0a84ff;
+      --accent-soft: rgba(10, 132, 255, 0.16);
+      --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.6), 0 18px 40px rgba(0, 0, 0, 0.45);
+      --card-shadow-hover: 0 2px 6px rgba(0, 0, 0, 0.7), 0 26px 60px rgba(0, 0, 0, 0.6);
+      --glass: rgba(28, 28, 30, 0.72);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --hero-from: #001a3a;
+      --hero-to: #0a84ff;
+      color-scheme: dark;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 
     body {
       min-height: 100vh;
-      background: var(--bg-color);
-      color: var(--text-color);
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+                   "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      letter-spacing: -0.012em;
+      transition: background-color 0.35s ease, color 0.35s ease;
+      padding-bottom: 140px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+    ::selection { background: var(--accent-soft); }
+
+    .wrap {
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ---------- Top bar ---------- */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      padding: 14px 0 12px;
+      background: var(--bg);
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      -webkit-backdrop-filter: saturate(180%) blur(22px);
+      backdrop-filter: saturate(180%) blur(22px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.25s ease, background-color 0.35s ease;
+    }
+    .topbar.is-stuck { border-bottom-color: var(--separator); }
+
+    .topbar-inner {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      transition: background 0.3s ease, color 0.3s ease;
+      gap: 12px;
     }
 
-    .container {
-      text-align: center;
-      color: var(--text-color);
-      max-width: 800px;
-      padding: 0 1rem;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
     }
+
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: linear-gradient(160deg, #4fb0ff, var(--accent));
+      display: grid;
+      place-items: center;
+      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.32);
+      flex: none;
+    }
+    .brand-mark svg { width: 17px; height: 17px; display: block; }
+
+    .brand-text { min-width: 0; }
+    .brand-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      line-height: 1.2;
+    }
+    .brand-name {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .topbar-actions { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--fill);
+      color: var(--text);
+      transition: transform 0.25s ease, background-color 0.25s ease;
+    }
+    .icon-btn:hover { transform: scale(1.06); background: var(--surface-2); }
+    .icon-btn:active { transform: scale(0.94); }
+    .icon-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .icon-btn svg { width: 18px; height: 18px; }
+    [data-theme="light"] .icon-moon { display: none; }
+    [data-theme="dark"] .icon-sun { display: none; }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 26px 0 22px; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .eyebrow svg { width: 13px; height: 13px; }
 
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, var(--accent-color), #fcc200);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-size: clamp(34px, 8vw, 46px);
+      line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
     }
 
     .subtitle {
-      font-size: 1rem;
-      color: var(--muted-color);
-      margin-bottom: 2rem;
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      max-width: 46ch;
     }
 
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: none;
-      border: none;
-      color: var(--muted-color);
-      font-size: 1.25rem;
-      cursor: pointer;
-      z-index: 100;
-      transition: color 0.3s ease;
+    /* ---------- Search ---------- */
+    .search {
+      position: relative;
+      margin-top: 20px;
     }
-
-    .theme-toggle:hover {
-      color: var(--accent-color);
+    .search svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 17px;
+      height: 17px;
+      color: var(--text-tertiary);
+      pointer-events: none;
     }
-
-    .apps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .app-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
+    .search input {
+      width: 100%;
+      height: 44px;
+      padding: 0 44px 0 37px;
+      border: 0;
       border-radius: 12px;
-      padding: 2rem 1.5rem;
-      text-decoration: none;
-      color: var(--text-color);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      background: var(--fill);
+      color: var(--text);
+      font: inherit;
+      font-size: 16px;
+      -webkit-appearance: none;
+      appearance: none;
+      outline: none;
+      transition: box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+    .search input::placeholder { color: var(--text-tertiary); }
+    .search input:focus {
+      background: var(--surface);
+      box-shadow: 0 0 0 2px var(--accent), 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+    .search-clear {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: none;
+      place-items: center;
+      background: var(--text-tertiary);
+      color: var(--bg);
+    }
+    .search-clear svg { position: static; transform: none; width: 14px; height: 14px; color: inherit; }
+    .search.has-value .search-clear { display: grid; }
+
+    /* ---------- Featured card ---------- */
+    .featured {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      border-radius: 26px;
+      padding: 26px 24px;
+      margin: 8px 0 34px;
+      color: #fff;
+      background:
+        radial-gradient(120% 140% at 100% 0%, rgba(90, 200, 250, 0.55) 0%, transparent 55%),
+        radial-gradient(100% 120% at 0% 100%, rgba(191, 90, 242, 0.45) 0%, transparent 60%),
+        linear-gradient(150deg, var(--hero-from), var(--hero-to));
+      box-shadow: var(--card-shadow);
+      isolation: isolate;
+    }
+    .featured::after {
+      content: "";
+      position: absolute;
+      inset: -40% -10% auto auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.14);
+      filter: blur(2px);
+      z-index: -1;
+    }
+    .featured-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.86);
+      margin-bottom: 12px;
+    }
+    .featured-tag .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #6ee7a8;
+      box-shadow: 0 0 0 4px rgba(110, 231, 168, 0.22);
+    }
+    .featured h2 {
+      font-size: clamp(22px, 5vw, 28px);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .featured p {
+      font-size: 14px;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.82);
+      max-width: 44ch;
+    }
+    .featured-stats {
       display: flex;
-      flex-flow: column wrap;
-      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .stat {
+      flex: 1 1 130px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+    .stat-value { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+    .stat-label { font-size: 11.5px; color: rgba(255, 255, 255, 0.78); margin-top: 2px; }
+
+    /* ---------- Section head ---------- */
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 0 4px 14px;
+    }
+    .section-head h2 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+    .section-head .see-all {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--accent);
+      white-space: nowrap;
     }
 
-    .app-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-      border-color: var(--accent-color);
+    /* ---------- App list (App Store rows) ---------- */
+    .app-list {
+      background: var(--surface);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--separator);
     }
 
-    .app-icon {
-      width: 56px;
-      height: 56px;
-      margin-bottom: 0.75rem;
-      background: var(--border-color);
-      border-radius: 8px;
+    .app-row {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 1.75rem;
-      color: var(--accent-color);
-      margin-bottom: 0.25rem;
+      gap: 14px;
+      padding: 14px 16px;
+      position: relative;
+      transition: background-color 0.2s ease;
     }
+    .app-row + .app-row::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 86px;
+      right: 0;
+      height: 1px;
+      background: var(--separator);
+    }
+    .app-row:hover { background: var(--surface-2); }
+    .app-row:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
+    .app-row[hidden] { display: none; }
 
+    .app-icon {
+      width: 60px;
+      height: 60px;
+      flex: none;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), 0 4px 12px rgba(0, 0, 0, 0.14);
+      position: relative;
+      overflow: hidden;
+    }
+    .app-icon::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.30), transparent 52%);
+      pointer-events: none;
+    }
+    .app-icon svg { width: 31px; height: 31px; position: relative; z-index: 1; }
+
+    .icon-calc   { background: linear-gradient(160deg, #ffb340, #ff5f2e 60%, #e8342a); }
+    .icon-router { background: linear-gradient(160deg, #62c8ff, #3a7bff 58%, #5b4bff); }
+    .icon-pin    { background: linear-gradient(160deg, #ff8fc7, #ff3b7f 55%, #d6006e); }
+
+    .app-body { min-width: 0; flex: 1; }
     .app-title {
-      font-size: 1rem;
+      font-size: 16px;
       font-weight: 600;
-      margin-bottom: 0.25rem;
-      align-self: stretch;
+      letter-spacing: -0.015em;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .app-sub {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .app-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 6px;
+      font-size: 11.5px;
+      color: var(--text-tertiary);
+    }
+    .rating { display: inline-flex; align-items: center; gap: 3px; color: var(--text-secondary); font-weight: 500; }
+    .stars { display: inline-flex; gap: 1px; color: var(--star); }
+    .stars svg { width: 9px; height: 9px; }
+    .meta-sep { width: 2px; height: 2px; border-radius: 50%; background: var(--text-tertiary); }
+    .privacy-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 500;
+    }
+    .privacy-badge svg { width: 11px; height: 11px; }
+
+    .pill {
+      flex: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 74px;
+      height: 30px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: var(--fill);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+    .app-row:hover .pill { background: var(--accent); color: #fff; }
+    .app-row:hover .app-icon { transform: scale(1.03); }
+    .app-icon { transition: transform 0.25s ease; }
+
+    /* ---------- Empty state ---------- */
+    .empty {
+      display: none;
+      text-align: center;
+      padding: 56px 24px;
+      background: var(--surface);
+      border-radius: 22px;
+      border: 1px solid var(--separator);
+      color: var(--text-secondary);
+    }
+    .empty svg { width: 34px; height: 34px; margin-bottom: 12px; color: var(--text-tertiary); }
+    .empty strong { display: block; color: var(--text); font-size: 16px; margin-bottom: 4px; }
+    .empty p { font-size: 14px; }
+    .is-empty .app-list { display: none; }
+    .is-empty .empty { display: block; }
+
+    /* ---------- License / footer ---------- */
+    .license-card {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 20px;
+      background: var(--surface);
+      border: 1px solid var(--separator);
+      box-shadow: var(--card-shadow);
+    }
+    .license-badge {
+      width: 42px;
+      height: 42px;
+      flex: none;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+    .license-badge svg { width: 21px; height: 21px; }
+    .license-text { flex: 1 1 200px; min-width: 0; }
+    .license-text strong { display: block; font-size: 14.5px; font-weight: 600; }
+    .license-text span { display: block; font-size: 12.5px; color: var(--text-secondary); margin-top: 2px; }
+    .license-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      height: 32px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: var(--fill);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .license-link:hover { background: var(--accent); color: #fff; }
+    .license-link svg { width: 12px; height: 12px; }
+
+    footer {
+      padding: 30px 0 10px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--text-tertiary);
+    }
+    footer .dev-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+      margin-bottom: 10px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    footer .dev-links a { color: var(--text-secondary); transition: color 0.2s ease; }
+    footer .dev-links a:hover { color: var(--accent); }
+
+    /* ---------- App Store tab bar ---------- */
+    .tabbar {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding: 8px;
+      border-radius: 26px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.18);
+      -webkit-backdrop-filter: saturate(180%) blur(22px);
+      backdrop-filter: saturate(180%) blur(22px);
+    }
+    .tab {
+      display: grid;
+      place-items: center;
+      gap: 3px;
+      width: 66px;
+      padding: 7px 0 5px;
+      border-radius: 18px;
+      color: var(--text-tertiary);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0;
+      transition: color 0.2s ease, background-color 0.2s ease;
+    }
+    .tab svg { width: 21px; height: 21px; }
+    .tab:hover { color: var(--accent); background: var(--fill); }
+    .tab.is-active { color: var(--accent); }
+    .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+    /* ---------- Motion ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .reveal:nth-child(2) { animation-delay: 0.05s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-delay: 0ms !important;
+        transition-duration: 0.001ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
     }
 
-    .app-desc {
-      font-size: 0.75rem;
-      color: var(--muted-color);
-    }
-
-    .link-icon {
-      margin-left: 0.25rem;
-      transform: rotate(-45deg);
-      transition: transform 0.3s ease;
-      font-size: 0.6rem;
-    }
-
-    .app-card:hover .link-icon {
-      transform: rotate(-45deg) translateX(2px);
-    }
-
-    @media (max-width: 480px) {
-      h1 { font-size: 2rem; }
-      .apps-grid { gap: 1rem; }
-      .app-card { padding: 1.5rem 1rem; }
-      .app-icon { width: 48px; height: 48px; }
+    @media (max-width: 520px) {
+      .wrap { padding: 0 16px; }
+      .hero { padding: 18px 0 16px; }
+      .featured { padding: 22px 20px; border-radius: 22px; }
+      .app-row { padding: 13px 14px; gap: 12px; }
+      .app-row + .app-row::before { left: 84px; }
+      .app-icon { width: 56px; height: 56px; border-radius: 15px; }
+      .app-icon svg { width: 28px; height: 28px; }
+      .pill { min-width: 62px; padding: 0 12px; font-size: 12px; }
+      .tab { width: 58px; }
+      .app-meta { gap: 8px; }
+      .license-link { width: 100%; justify-content: center; }
     }
   </style>
 </head>
 <body>
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
-    🌓
-  </button>
-  
-  <div class="container">
-    <h1>Privacy Policies</h1>
-    <p class="subtitle">Select an application to view its privacy policy</p>
-    
-    <div class="apps-grid">
-      <a href="https://sajedur0.github.io/Privacy-Policies/Disk-Partition-Calculator/" class="app-card">
-        <div class="app-icon">📊</div>
-        <div class="app-title">Disk Partition Calculator</div>
-        <div class="app-desc">Privacy Policy</div>
-        <span class="link-icon">→</span>
-      </a>
+  <header class="topbar" id="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 2.6 20 5.8v6.1c0 5-3.4 8.6-8 10.5-4.6-1.9-8-5.5-8-10.5V5.8z" fill="#fff" opacity=".95"/>
+            <path d="M8.6 11.9l2.3 2.4 4.4-4.6" stroke="#0071e3" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <div class="brand-text">
+          <div class="brand-label">Developer</div>
+          <div class="brand-name">Sajedur0</div>
+        </div>
+      </div>
 
-      <a href="https://sajedur0.github.io/Privacy-Policies/Router-Page-Setup/" class="app-card">
-        <div class="app-icon">📡</div>
-        <div class="app-title">Router Page Setup</div>
-        <div class="app-desc">Privacy Policy</div>
-        <span class="link-icon">→</span>
-      </a>
-
-      <a href="https://sajedur0.github.io/Privacy-Policies/PinSaver-Video-Downloader/" class="app-card">
-        <div class="app-icon">📥</div>
-        <div class="app-title">PinSaver Video Downloader</div>
-        <div class="app-desc">Privacy Policy</div>
-        <span class="link-icon">→</span>
-      </a>
+      <div class="topbar-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch to dark appearance" title="Toggle appearance">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4.2"/>
+            <path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.7 8.7 0 1 0 10.8 10.8z"/>
+          </svg>
+        </button>
+      </div>
     </div>
-  </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero reveal">
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="10.5" width="16" height="10" rx="3"/>
+          <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/>
+        </svg>
+        Privacy Center
+      </span>
+      <h1>Privacy Policies</h1>
+      <p class="subtitle">Everything our apps collect, store and share — written in plain language. Pick an app to read its policy.</p>
+
+      <div class="search" id="searchBox" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="6.5"/>
+          <path d="m16 16 4.5 4.5"/>
+        </svg>
+        <label for="appSearch" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Search apps</label>
+        <input id="appSearch" type="search" placeholder="Search apps" autocomplete="off" spellcheck="false">
+        <button class="search-clear" id="searchClear" type="button" aria-label="Clear search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+            <path d="M6 6l12 12M18 6L6 18"/>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <section class="featured reveal" aria-label="About this collection">
+      <div class="featured-tag"><span class="dot"></span> Transparent by design</div>
+      <h2>Your data, clearly explained.</h2>
+      <p>Three apps, one promise: no account required, no hidden tracking, and a policy you can read in a couple of minutes.</p>
+      <div class="featured-stats">
+        <div class="stat">
+          <div class="stat-value">3</div>
+          <div class="stat-label">Apps covered</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">2 min</div>
+          <div class="stat-label">Average read</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">Plain</div>
+          <div class="stat-label">English, no jargon</div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="appsHeading">
+      <div class="section-head">
+        <h2 id="appsHeading">All Apps</h2>
+        <span class="see-all" id="appCount">3 apps</span>
+      </div>
+
+      <div id="results">
+        <div class="app-list" id="appList">
+          <a class="app-row" href="https://sajedur0.github.io/Privacy-Policies/Disk-Partition-Calculator/" data-name="disk partition calculator utilities storage">
+            <span class="app-icon icon-calc" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="8.2"/>
+                <path d="M12 3.8V12l5.9 3.4"/>
+              </svg>
+            </span>
+            <span class="app-body">
+              <span class="app-title">Disk Partition Calculator</span>
+              <span class="app-sub">Privacy Policy · Utilities</span>
+              <span class="app-meta">
+                <span class="rating">
+                  <span class="stars" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                  </span>
+                  4.9
+                </span>
+                <span class="meta-sep"></span>
+                <span class="privacy-badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 7.9-7 9.5-4-1.6-7-4.9-7-9.5V6z"/></svg>
+                  Privacy
+                </span>
+              </span>
+            </span>
+            <span class="pill">Open</span>
+          </a>
+
+          <a class="app-row" href="https://sajedur0.github.io/Privacy-Policies/Router-Page-Setup/" data-name="router page setup utilities network wifi">
+            <span class="app-icon icon-router" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 9.5a11.4 11.4 0 0 1 16 0"/>
+                <path d="M7 13a7.2 7.2 0 0 1 10 0"/>
+                <path d="M10 16.4a3 3 0 0 1 4 0"/>
+                <circle cx="12" cy="19.4" r="1.1" fill="currentColor" stroke="none"/>
+              </svg>
+            </span>
+            <span class="app-body">
+              <span class="app-title">Router Page Setup</span>
+              <span class="app-sub">Privacy Policy · Utilities</span>
+              <span class="app-meta">
+                <span class="rating">
+                  <span class="stars" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                  </span>
+                  4.7
+                </span>
+                <span class="meta-sep"></span>
+                <span class="privacy-badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 7.9-7 9.5-4-1.6-7-4.9-7-9.5V6z"/></svg>
+                  Privacy
+                </span>
+              </span>
+            </span>
+            <span class="pill">Open</span>
+          </a>
+
+          <a class="app-row" href="https://sajedur0.github.io/Privacy-Policies/PinSaver-Video-Downloader/" data-name="pinsaver video downloader photo video pinterest downloader">
+            <span class="app-icon icon-pin" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3.6v10.2"/>
+                <path d="m7.8 9.7 4.2 4.2 4.2-4.2"/>
+                <path d="M4.5 16.4v2.2a1.8 1.8 0 0 0 1.8 1.8h11.4a1.8 1.8 0 0 0 1.8-1.8v-2.2"/>
+              </svg>
+            </span>
+            <span class="app-body">
+              <span class="app-title">PinSaver Video Downloader</span>
+              <span class="app-sub">Privacy Policy · Photo &amp; Video</span>
+              <span class="app-meta">
+                <span class="rating">
+                  <span class="stars" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5-5.9-3.2-5.9 3.2 1.2-6.5L2.5 9.4l6.6-.9z"/></svg>
+                  </span>
+                  4.8
+                </span>
+                <span class="meta-sep"></span>
+                <span class="privacy-badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.5c0 4.6-3 7.9-7 9.5-4-1.6-7-4.9-7-9.5V6z"/></svg>
+                  Privacy
+                </span>
+              </span>
+            </span>
+            <span class="pill">Open</span>
+          </a>
+        </div>
+
+        <div class="empty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <circle cx="11" cy="11" r="6.5"/>
+            <path d="m16 16 4.5 4.5"/>
+          </svg>
+          <strong>No apps found</strong>
+          <p>Try a different app name.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="license-card reveal" aria-label="License">
+      <span class="license-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6.5 3.5h8L19 8v12.5H6.5z"/>
+          <path d="M14.5 3.5V8H19"/>
+          <path d="M9.5 12.5h6M9.5 16h4"/>
+        </svg>
+      </span>
+      <span class="license-text">
+        <strong>Apache License 2.0</strong>
+        <span>Copyright 2026 Sajedur0. All rights reserved.</span>
+      </span>
+      <a class="license-link" href="https://github.com/Sajedur0/Privacy-Policies-Test/blob/main/LICENSE" target="_blank" rel="noopener">
+        View License
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+    </section>
+
+    <footer>
+      <div class="dev-links">
+        <a href="https://play.google.com/store/apps/dev?id=5574132061091657048" target="_blank" rel="noopener">Google Play</a>
+        <a href="mailto:Sajedurzero@gmail.com">Sajedurzero@gmail.com</a>
+        <a href="https://github.com/Sajedur0" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div>© 2026 Sajedur0 · Licensed under the Apache License 2.0</div>
+      <div>Made with care for your privacy.</div>
+    </footer>
+  </main>
+
+  <nav class="tabbar" aria-label="Sections">
+    <a class="tab is-active" href="#top" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 10.6 12 4l8 6.6V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/>
+      </svg>
+      Today
+    </a>
+    <a class="tab" href="#appsHeading">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3.5" y="3.5" width="7" height="7" rx="2"/>
+        <rect x="13.5" y="3.5" width="7" height="7" rx="2"/>
+        <rect x="3.5" y="13.5" width="7" height="7" rx="2"/>
+        <rect x="13.5" y="13.5" width="7" height="7" rx="2"/>
+      </svg>
+      Apps
+    </a>
+    <a class="tab" href="#appSearch" id="searchTab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+        <circle cx="11" cy="11" r="6.5"/>
+        <path d="m16 16 4.5 4.5"/>
+      </svg>
+      Search
+    </a>
+  </nav>
 
   <script>
-    // Theme toggle functionality
-    const themeToggle = document.getElementById('themeToggle');
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    // Set initial theme based on system preference
-    if (prefersDarkScheme.matches) {
-      document.body.setAttribute('data-theme', 'dark');
-    } else {
-      document.body.setAttribute('data-theme', 'light');
-    }
-    
-    // Toggle theme on button click
-    themeToggle.addEventListener('click', () => {
-      if (document.body.getAttribute('data-theme') === 'dark') {
-        document.body.setAttribute('data-theme', 'light');
-      } else {
-        document.body.setAttribute('data-theme', 'dark');
+    (function () {
+      "use strict";
+
+      const root = document.documentElement;
+      const toggle = document.getElementById("themeToggle");
+
+      /* ---------- Appearance ---------- */
+      const stored = localStorage.getItem("pp-theme");
+      const systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+
+      function applyTheme(theme) {
+        root.setAttribute("data-theme", theme);
+        toggle.setAttribute(
+          "aria-label",
+          theme === "dark" ? "Switch to light appearance" : "Switch to dark appearance"
+        );
       }
-    });
+
+      applyTheme(stored || (systemDark.matches ? "dark" : "light"));
+
+      toggle.addEventListener("click", function () {
+        const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        applyTheme(next);
+        localStorage.setItem("pp-theme", next);
+      });
+
+      systemDark.addEventListener("change", function (e) {
+        if (!localStorage.getItem("pp-theme")) applyTheme(e.matches ? "dark" : "light");
+      });
+
+      /* ---------- Search & filter ---------- */
+      const box = document.getElementById("searchBox");
+      const input = document.getElementById("appSearch");
+      const clearBtn = document.getElementById("searchClear");
+      const results = document.getElementById("results");
+      const countLabel = document.getElementById("appCount");
+      const rows = Array.prototype.slice.call(document.querySelectorAll(".app-row"));
+
+      function filter() {
+        const q = input.value.trim().toLowerCase();
+        let shown = 0;
+
+        rows.forEach(function (row) {
+          const haystack = (row.dataset.name + " " + row.textContent).toLowerCase();
+          const match = !q || haystack.indexOf(q) !== -1;
+          row.hidden = !match;
+          if (match) shown++;
+        });
+
+        box.classList.toggle("has-value", q.length > 0);
+        results.classList.toggle("is-empty", shown === 0);
+        countLabel.textContent = q
+          ? shown + (shown === 1 ? " result" : " results")
+          : rows.length + " apps";
+      }
+
+      input.addEventListener("input", filter);
+
+      clearBtn.addEventListener("click", function () {
+        input.value = "";
+        filter();
+        input.focus();
+      });
+
+      input.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          input.value = "";
+          filter();
+          input.blur();
+        }
+      });
+
+      document.getElementById("searchTab").addEventListener("click", function (e) {
+        e.preventDefault();
+        input.focus();
+        input.scrollIntoView({ block: "center", behavior: "smooth" });
+      });
+
+      /* ---------- Sticky header divider ---------- */
+      const topbar = document.getElementById("topbar");
+      function onScroll() {
+        topbar.classList.toggle("is-stuck", window.scrollY > 8);
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    })();
   </script>
 </body>
 </html>
